@@ -1,13 +1,46 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>home</ion-title>
+    <ion-title class="ion-text-center">
+      Catálogo de Productos
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col>
+          @for (product of products; track product.id) {
+          <ion-card class="ion-padding">
+            <div style="display: flex; justify-content: center; align-items: center;">
+              <img [alt]="product.title" [src]="product.image" height="200" />
+            </div>
+
+            <ion-card-header>
+              <ion-card-title>
+                ${{ product.price }}
+              </ion-card-title>
+              <ion-card-subtitle>
+                {{ product.title}}
+              </ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+              {{ product.description }}
+            </ion-card-content>
+          </ion-card>
+          }
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      &copy; IDWM 2024
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
